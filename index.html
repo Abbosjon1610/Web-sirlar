@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="style/jquery-3.5.1.min.js"></script>
+<style>
+/*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body { margin:0;
+    background-image:url('pic/f3.jpg');
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-position:static;
+    background-attachment:fixed;
+}
+
+.dropbtn { padding-right:5px;padding-top:9px; cursor: pointer; align:right; } 
+.dropdown { float: right; position: none; display: inline-block; } 
+.dropdown-content { border-radius:5px; display: none; position: fixed; background-color: #f9f9f9; min-width: 160px; overflow: auto; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); right: 9px;} 
+.dropdown-content a { color: black; padding: 12px 16px; text-decoration: none; display: block; } 
+.dropdown a:active {color:black;}
+.dropdown a:focus {background-color:black;opacity:0.8;color:white;}
+.dropdown a:hover {background-color:black; opacity:0.8;color:white;} .show {display:block;}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-top-right-radius:12px;
+    border-bottom-right-radius:12px;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 0px;
+    display:block;
+}
+
+
+
+.sidenav .tugma {
+    position: absolute;
+    top: 0;
+    color: red;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidenav .tugma a:hover {
+    color: #dd0000;
+}
+
+@media screen and (max-height: 450px){
+  .sidenav {padding-top: 0px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+.kul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(to top, #00bdff, #005dff, #000cff, #005dff, #00bdff);
+    position: fixed;
+    display:block;
+    top: 0;
+    width: 100%;
+}
+@font-face {
+    font-family: fontim;
+    src: url('Kerakli.ttf');
+}
+.kli {
+    float: center; text-align:center;
+}
+
+.kli {   
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight:bold;
+    border-top: 3px solid #00008b;
+    border-bottom: 3px solid #00008b;
+}
+
+.kli:hover:not(.active) {
+   color: white;
+}
+
+.wena {padding-left:10px; padding-right:30px; height:26px;}
+
+.bul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+}
+@font-face {
+    font-family: fontim;
+    src: url('Kerakli.ttf');
+}
+
+.sli {
+    vertical-align: middle;
+    font-size: 22px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s
+    display: block;
+    background: linear-gradient(to top, #003380, #003d99, #0047b3, #0052cc, #005ce6, #0066ff, #1a75ff, #3385ff, #4d94ff, #66a3ff, #80b3ff, #99c2ff);
+    padding: 10px 10px;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+.sli:active {background: linear-gradient(to top, #003380, #003d99, #0047b3, #0052cc, #005ce6, #0066ff, #1a75ff, #3385ff, #4d94ff, #66a3ff, #80b3ff, #99c2ff);}
+
+.sli:focus {background: linear-gradient(to top, #800000, #990000, #b30000, #cc0000, #e60000, #ff0000, #ff1a1a, #ff3333, #ff4d4d, #ff6666, #ff8080, #ff9999);}
+
+
+.sli:hover {background: linear-gradient(to top, #800000, #990000, #b30000, #cc0000, #e60000, #ff0000, #ff1a1a, #ff3333, #ff4d4d, #ff6666, #ff8080, #ff9999);}
+
+.wei a {text-decoration: none;display:block;background:url('xush.mp3');}
+.wei a:hover {color: #000073;}
+
+
+.active {
+    background-color: steelblue;
+}
+
+.uchun {background:powderblue;color:royalblue;margin-top:90px;margin-left:10px;margin-right:10px;padding:20px;width:auto;height:auto;border-radius:8px;border:3px solid blue;text-align:center;font-size:20px;position:static;text-decoration:none;}
+.ikon {height:25px;margin-left:5px;margin-right:5px;}
+
+.vip {background:#2dc6ff;margin:30px 20px;padding:10px;border-radius:7px;border:4px solid black;text-align:center;font-size:25px;text-decoration:none;position:auto;color:#f5f5f5;text-decoration:none;font-family:fontim;animation:ware 9s linear infinite;}
+.vip:hover {background:#13335a;text-decoration:none;color:#fffafa;transition:0.3s;transform:0.3s;border:4px solid #ff4900;}
+
+@keyframes ware {
+0% {border-color:red;}
+10% {border-color:aqua;}
+30% {border-color:chocolate;}
+50% {border-color:HotPink;}
+70% {border-color:DarkBlue;}
+90% {border-color:red;}
+100% {border-color:red;}
+}
+
+a {
+text-decoration:none;
+}
+
+.qoid {background:#002699;color:white;margin-top:30px;padding:10px;width:auto;height:auto;text-align:center;font-size:10px;position:static;text-decoration:none;}
+
+
+.qas {
+    background-color: black;
+    text-color: white;
+    color: white;
+    cursor: pointer;
+    padding: 9px;
+    width: 88%;
+    border: 5px solid red;
+    margin-top: 18px;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    transition: 5.4s;
+    border-radius: 0.5em;
+    position: center;
+}
+
+/* The animation code */
+@keyframes example {
+    from {opacity: 0;}
+    to {opacity:1;}
+}
+
+/* The element to apply the animation to */
+#siv {
+    animation-name: example;
+    animation-duration: 10s;
+}
+
+
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgb(0,0,0);
+   background-color: rgba(0,0,0,0.4);
+   padding-top: 60px;
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10px 28px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button (x) */
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+
+/* Add Zoom Animation */ 
+
+.animate {
+ -webkit-animation: animatezoom 0.6s;
+ animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+ from {-webkit-transform: scale(0)}
+ to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel
+button on extra small screens */ 
+
+@media screen and(max-width: 300px){
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;float:right;
+    }
+}
+
+
+
+</style>
+</head>
+<body onload="startTime()">
+
+<iframe height="0" width="0" src="xush.mp3" frameborder="0"></iframe>
+
+<ul class="kul">
+
+
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)"
+class="tugma"
+onclick="closeNav()">×</a>
+<img src="a1.jpg" width="100%">
+<ul class="bul">
+<a href="https://t.me/Abbos_Tursunov" class="wei"><li class="sli" onclick="internal();"><img src="ic_gif_1.png" class="wena">Admin bilan aloqa</li></a>
+
+<a href="https://youtu.be/cLZs5yHfmw8" class="wei"><li class="sli" onclick="taternal();"><img src="ic_youtube_logo.png" class="wena">YouTube kanalimiz</li></a>
+<a href="http://t.me/Abbos_Tursunov" class="wei"><li class="sli" onclick="taklif();"><img src="2.png" class="wena">Maxsus takliflar</li></a>
+<a href="https://t.me/dasturni_yangilash" class="wei"><li class="sli" onclick="yaternal();
+var audio = new Audio();
+audio.src = 'yangilash.mp3';
+audio.autoplay = true;"><img src="download_white.png" class="wena">Ilovani yangilash</li></a>
+
+<a href="http://t.me/android_sirlari_star_bot" class="wei"><li class="sli"><img src="splash.png" class="wena">Telegram botimiz</li></a>
+
+<a href="https://t.me/joinchat/QDuPXxyFe6LgQ6Ltebz5HQ" class="wei"><li class="sli" onclick="mternal();"><img src="browser.png" class="wena">Html muzokaralar</li></a>
+
+<a href="https://t.me/DASTURCHILAR_KANALI_7777" class="wei"><li class="sli" onclick="external();"><img src="t.png" class="wena">Hamkor kanal</li></a>
+</div>
+
+
+<span style="font-size:30px;cursor:
+pointer;position:fixed;float:left;padding-left:5px;padding-top:9px;"onclick="openNav()"><img src="navigation_icon.png" height="19px"></span>
+
+<script>
+
+function openNav() {
+document.getElementById("mySidenav")
+.style.width="80%";
+}
+
+function closeNav() {
+document.getElementById("mySidenav")
+.style.width = "0";
+}
+</script>
+
+<script>
+var audio = document.getElementById("audioMusic");
+function bell(){
+audio.play();
+}
+</script>
+
+
+<div class="dropdown"> <img src="ic_action_overflow.png" onclick="myFunction()" class="dropbtn" height="30px">
+<div id="myDropdown" class="dropdown-content">
+<a href="a1.html">Java bo'lim</a>
+<a href="a2.html">Xacker va viruslar</a>
+<a href="a3.html">Foydali ilovalar</a>
+<a href="a4.html">Dastur haqida</a>
+</div>
+</div>
+
+<script> function myFunction() { document.getElementById("myDropdown") .classList.toggle("show"); } window.onclick = function(event) { if(!event.target.matches('.dropbtn')){ var dropdowns = document .getElementsByClassName ("dropdown-content"); var i; for(i=0; i < dropdowns.length; i++){ var openDropdown = dropdowns[i]; if (openDropdown.classList.contains ('show')) { openDropdown.classList.remove('show'); } } } } </script>
+
+<li class="kli"><center>XUSH KELIBSIZ!!!</center></li></ul>
+
+<div class="uchun">Assalomu-alaykum! hurmatli muxlislar! Bu dasturimiz orqali siz android haqida qiziqarli ma'lumotlarni o'rganishingiz mumkin. Agar bu dastur sizga yoqsa kanalimizga obuna bo'lishni unutmang!<br><center><center><img src="tom_fb_like.png" width="45%" style="margin-top:7px;height:auto;" onclick="tola()"></center>
+<span style="margin-top:7px;margin-bottom:7px;"><font color="#ff4807"><b><font color="blue">Bugun:</font></b> <b id="kun"></b> <b>-</b> <b id="oy"></b>   <b id="yil"></b> <b>-</b> <b>yil</b><br><b><font color="blue">Hafta kuni</font></b> <b><font color="royalblue">-</font></b> <b id="hafta"></b><br><b><font color="blue">Soat</font></b> <b><font color="royalblue">-</font></b> <b id="txt"></b></font>
+</span>
+<script>
+function tola(){
+document.getElementsByTagName("body").style.background='black';
+}
+</script>
+<script>
+var d = new Date();
+document.getElementById("kun").innerHTML = d.getDate();
+</script>
+<script>
+var d = new Date();
+var months = ["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"];
+document.getElementById("oy").innerHTML = months[d.getMonth()];
+</script>
+<script>
+var d = new Date();
+var days = ["Yakshanba","Dushanba","Seshanba","Chorshanba","Payshanba","Juma","Shanba"];
+document.getElementById("hafta").innerHTML = days[d.getDay()];
+</script>
+<script>
+var d = new Date();
+document.getElementById("yil").innerHTML = d.getFullYear();
+</script>
+
+</div>
+<a href="aa.html"><div class="vip"><img src="rate2.png" class="ikon">KIRISH<img src="rate2.png" class="ikon"></div></a>
+
+
+<script>
+
+// Get the modal 
+
+var modal = document.getElementById
+('id01');
+
+// When the user clicks anywhere
+outside of the modal, close it 
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+     modal.style.display = "none";
+    }
+}
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+function internal(){
+var audio = new Audio('adminaloqa.mp3');
+audio.play();
+window.alert("Shikoyat, talab va takliflaringiz bo'lsa telegram messenjeri orqali admin bilan bog'lanishingiz mumkin.");
+};
+</script>
+
+
+<script type="text/javascript"> function mternal(){ alert("Html ya'ni web dasturlashga qiziquvchilar uchun ajoyib yangilik! Hml muzokaralar shaxsiy guruhimizda siz html haqidagi fikrlaringizni boshqalar bilan almashishingiz va muzokaralar olib borishingiz mumkin."); } </script>
+
+<script type="text/javascript"> function gternal(){ alert("Guruhimiz sizga qo'ldan kelgancha yordam berishga tayyor! Guruhimizda barcha savollar qabul qilinadi.  Ko'nglingizdan chiqarib odam qo'shsangiz ham bo'ladi."); } </script>
+
+<script type="text/javascript"> function external(){ alert("Hamkor kanalimizga tashrif buyiring. Sizga bu kanal ham albatta ma'qul bo'ladi."); } </script>
+
+
+<script type="text/javascript">
+function yaternal(){
+window.alert("Bizning barcha dasturlarimizni ushbu kanaldan yangilab olishingiz mumkin.");
+};
+</script>
+
+
+<script type="text/javascript">
+function taternal(){
+var audio = new Audio();
+audio.src = 'youtubes.mp3';
+audio.autoplay = true;
+window.alert("Siz bizning YouTube kanalimizga ham a'zo bo'lishingiz mumkin. Sizni YouTube'da ham kutib qolamiz.");
+};
+</script>
+
+
+<script type="text/javascript">
+function taklif(){
+var audio = new Audio('takliflar.mp3');
+audio.play();
+window.alert("Maxsus takliflar orqali siz o'zingizga kerakli bo'limni xarid qilishingiz mumkin. Buning uchun siz telegram messenjeri orqali admin bilan bog'lanishingiz kerak. Agar kelishuv amalga oshsa bonus sifatida sizga yana bitta siz xohlagan bo'limdagi ma'lumot o'rgatiladi.");
+};
+</script>
+
+<div class="vip" type="button" onclick="document.
+getElementById('id01')
+
+.style.display='block';
+var audio = new Audio();
+audio.src = 'kanalhaqida.mp3';
+audio.autoplay = true;"><img src="t.png" class="ikon">TELEGRAM<img src="t.png" class="ikon"><br>KANALIMIZ</div>
+
+
+<a href="http://t.me/android_sirlari_guruhi" style="text-decoration:none;"><div class="vip" type="button" onclick="gternal();"><img src="t.png" class="ikon">TELEGRAM<img src="t.png" class="ikon"><br>GURUHIMIZ</div></a>
+
+
+
+
+
+<div id="id01" class="modal">
+
+<form class="modal-content animate"
+action="action_page.php">
+<div class="imgcontainer">
+
+<div>
+<div>
+<img src="failed.png" style="float:right;height:26px;width:26px;margin-top:5px;margin-right:5px;" onclick="document.getElementById
+ ('id01').style.
+
+ display='none'">
+<header style="top:100%">
+<style>
+.marga {margin-right:5px; margin-left:5px;}
+</style>
+<div style="background:black;padding:4px;color:white;text-align:center;"><h2 style="text-align:center;"><center><font color="white">KANALIMIZ</font></center></h2></div>
+</div>
+
+<div style="background:#ccf5ff;color:#1b00ff;font-family:times new roman;font-size:14px;padding:3px;">
+<hr color="#00da00" height="2px">
+<p>Kanalimizda android sirlaridan xabardor bo'lib borishingiz va kerakli dasturlarni yuklab olishingiz mumkin.<br>Murojatlar uchun: <a href="http://t.me/Abbos_Tursunov"><font color="red">@Abbos_Tursunov</font></a> ga murojat qilishingiz mumkin.<br>Guruhimiz: <a href="http://t.me/android_sirlari_guruhi"><font color="red">@android_sirlari_guruhi</font></a>
+</p>
+<hr color="#ff6507" style="padding:5px;">
+<center><a href="http://t.me/asosiy_android_sirlari"><h4><font color="red">KANALGA O'TISH</font></h4></a></center>
+<hr color="#ff6507" style="padding:5px;">
+</div>
+<center><div style="background:black;color:indigo;font-weight:bold;width:auto;padding:3px;"><font color="white">Copyright 2020-2021 ®</font></div></center>
+</div>
+
+ </div>
+</div>
+</div>
+
+
+
+
+
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+
+
+<script type="text/javascript">
+function toshla() {
+setTimeout( "window.alert('Mana men chiqdim')", 9000);
+}
+</script>
+
+
+
+
+<div class="qoid">Ilova versiyasi - 2.5<br>Copyright 2020-2021 ©<br>All rights reserved</div>
+</body>
+</html>
